@@ -7,8 +7,45 @@
   min-height: 100vh;
 }
 
+.textBox {
+  min-height: 50px;
+  padding: 16px;
+  font-size: 2rem;
+  width: 100%;
+  font-family: var(--font-mono);
+}
+
+.wordsList {
+  height: 150px;
+  overflow-y: scroll;
+}
+
+.hashTagList {
+  height: 100px;
+  overflow-y: scroll;
+  border-width: 1px;
+  border-color: blue;
+}
+
+.hashTag {
+  display: block;
+  border-width: 1px;
+  border-color: blue;
+  margin-bottom: 10px;
+}
+
+.hashTagSelected {
+  background-color: gray;
+}
+
+.wordButton {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/*******************************************************************************************/
+
 .description {
-  display: inherit;
   justify-content: inherit;
   align-items: inherit;
   font-size: 0.85rem;
