@@ -1,6 +1,6 @@
 "use client";
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from 'next/image';
+import styles from './page.module.css';
 import WordChecker from './components/WordChecker'
 import DataManagement from './components/DataManagement';
 import WordsList from './components/WordsList';

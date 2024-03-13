@@ -11,6 +11,10 @@ export type Word = {
     hashTag?: string,
 };
 
+export type HashTagsObj = {
+    [key: string]: boolean
+}
+
 export type OnKlickVoid = (e: MouseEvent<HTMLButtonElement>) => void;
 
 export type PromptInfo = {hint: string, correctWord: string, correctedWordArr: Array<MarkedTextBlock>, mark: number};
@@ -24,7 +28,8 @@ export type wordTrainer = () =>
     loadWordsFromTheFile: OnKlickVoid,
     saveWordsToTheFile: OnKlickVoid,
     words: Word[],
-    hashTags: Array<string>,
+    hashTagsObj: HashTagsObj,
+    onHashTagClicked: (e: MouseEvent<HTMLButtonElement>) => void,
     saveWord: (word: Word) => void,
     deleteWord: (word: Word) => void,
 };

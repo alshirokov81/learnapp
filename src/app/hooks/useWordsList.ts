@@ -9,7 +9,9 @@ const useWordsList = (words: Word[]) => {
 
     const onItemClicked = useCallback(
         (e: MouseEvent<HTMLButtonElement>) => {
-            const itemId = e.target.id || e.target.parentElement.id;
+
+            const target = e.target as HTMLElement
+            const itemId = target?.id || target?.parentElement?.id;
             console.log('itemId');
             const word = words.find((word) => word.val === itemId);
             if (word) {

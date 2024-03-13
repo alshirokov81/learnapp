@@ -3,6 +3,7 @@ import { useState, useMemo, useCallback, useEffect, Dispatch, SetStateAction, Ch
 
 import { Word, PromptInfo, MarkedTextBlock, wordTrainer } from '../types/index';
 import { loadWords, saveWordApi, saveWords, deleteWordApi, saveWordsToFile, loadTextFromFile } from '../api/api';
+import { HashTagsObj } from '../types/index';
 
 //TRODO remove type duplication
 interface MergeObj {
@@ -10,6 +11,8 @@ interface MergeObj {
 }
 
 const HOW_MUCH_TIMES_REPEAT_WORDS = 2;
+
+const win = typeof window !== "undefined" ? window : null;
 
 const analyzeWord = (correctWord: string, wordToCheck: string): Array<MarkedTextBlock> => {
     let rez: Array<MarkedTextBlock>  = [];
@@ -32,7 +35,7 @@ const useWordsTrainer: wordTrainer = () => {
     const newWords = loadWords();
     const [words, setWords] = useState(newWords);
     const [currentWord, setCurrentWord] = useState('');
-    const [hashTagsObj, setHashTagObj] = useState({});
+    const [hashTagsObj, setHashTagObj] = useState<HashTagsObj>({});
 
     const onWordInputChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => setCurrentWord(e.target.value),
@@ -114,7 +117,8 @@ const useWordsTrainer: wordTrainer = () => {
 
     const onHashTagClicked = useCallback(
         (e: MouseEvent<HTMLButtonElement>) => {
-            const itemId = e.target.id || e.target.parentElement.id || '' as string;
+            const target = e.target as HTMLElement
+            const itemId = target?.id || target?.parentElement?.id || '';
 
             if (hashTagsObj.hasOwnProperty(itemId)) {
                 const newHashTagsObj = {...hashTagsObj};
@@ -173,7 +177,7 @@ const useWordsTrainer: wordTrainer = () => {
         console.log(JSON.stringify(words));
         const {val, translation, mark = 0} = wordToLearn;
         const prompTitle = isRepeat || mark < 1? ` ${val} ${translation} (${mark})` : `${translation} (${mark})` ;
-        const answer = window.prompt(prompTitle) || '';
+        const answer = win && win.prompt(prompTitle) || '';
         if (answer === '@') {
             return;
         }
@@ -184,7 +188,7 @@ const useWordsTrainer: wordTrainer = () => {
 
     const loadWordsFromTheFile = useCallback(
         async () => {
-            const text = await loadTextFromFile();
+            const text = await loadTextFromFile() || '';
             const wordsObj = JSON.parse(text) as unknown;
             //TODO create separate validation function, check approaches and rewrite and extend logic.
             if (Object.prototype.toString.call(wordsObj) === "[object Object]") {
