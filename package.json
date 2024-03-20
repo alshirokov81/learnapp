@@ -2,6 +2,7 @@
   "name": "learnapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alshirokov81.github.io/learnapp",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
