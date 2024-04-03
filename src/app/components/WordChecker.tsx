@@ -5,6 +5,7 @@ import {PromptInfo} from '../types/index';
 import styles from '../page.module.css';
 import useWordsTrainer from '../hooks/useWordsTrainer';
 import MarkedText from '../components/MarkedText';
+import BoxedInput from './BoxedInput';
 
 //TODO refactor type und import function types from types
 type WordCheckerProps = {
@@ -42,6 +43,15 @@ const WordChecker: FC<WordCheckerProps> = ({check, currentWord, setCurrentWord, 
             {/*
             <label>Bedeutung auf Deutsch:</label>
             */}
+            {/*
+              <BoxedInput
+                currentWord = {currentWord}
+                setCurrentWord = {setCurrentWord}
+                onSubmit={onSubmit}
+              />
+            */
+            }
+
             <input
               type="text"
               id="fname"
