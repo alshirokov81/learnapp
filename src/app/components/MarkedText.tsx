@@ -12,7 +12,9 @@ const MarkedText = ({markedTextArr}: {markedTextArr: Array<MarkedTextBlock>}) =>
                         case 'p':
                             return <span>{textVal}</span>;
                         case 's':
-                            return <s>{textVal}</s>;
+                            return <span className={styles.checkedTextError}>{textVal}</span>;
+                        case 'g':
+                            return <span className={styles.checkedTextUndefined}>{textVal}</span>;
                     }                    
                 }
             )}

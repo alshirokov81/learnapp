@@ -22,7 +22,8 @@ const analyzeWord = (correctWord: string, wordToCheck: string): Array<MarkedText
             rez.push({textVal: correctWord[i], markType: 'p'});
         }
         else {
-            rez.push({textVal: wordToCheck.substring(i), markType: 's'});
+            rez.push({textVal: wordToCheck[i] || '...', markType: 's'});
+            wordToCheck.substring(i).length > 1 && rez.push({textVal: wordToCheck.substring(i+1), markType: 'g'});
             break;
         }
     };

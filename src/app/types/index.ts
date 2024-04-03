@@ -18,7 +18,7 @@ export type HashTagsObj = {
 export type OnKlickVoid = (e: MouseEvent<HTMLButtonElement>) => void;
 
 export type PromptInfo = {hint: string, correctWord: string, correctedWordArr: Array<MarkedTextBlock>, mark: number};
-export type MarkedTextBlock = {textVal: string, markType: 's' | 'p' | 'b'};
+export type MarkedTextBlock = {textVal: string, markType: 's' | 'p' | 'b' | 'g'};
 export type wordTrainer = () => 
 {
     check: () => void
